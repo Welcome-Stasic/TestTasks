@@ -1,12 +1,21 @@
-function calcAge() {
-    const input = document.getElementById('year').value;
-    const result = document.getElementById('res');
-    const currentYear = new Date().getFullYear();
-    const year = parseInt(input);
+function addTask() {
+    var input = document.getElementById('taskInput');
+    var taskText = input.value;
+    var list = document.getElementById('taskList');
 
-    if (!isNaN(year) && year > 1900 && year <= currentYear) {
-        result.textContent = `Ваш возраст: ${currentYear - year} лет`;
-    } else {
-        result.textContent = 'введите корректный год.';
+    if (taskText === "") {
+        alert("Нельзя добавить пустую задачу!");
+        return;
     }
+
+    var newTask = document.createElement('li');
+    newTask.innerText = taskText;
+
+    newTask.onclick = function () {
+        list.removeChild(newTask);
+    }
+
+    list.appendChild(newTask);
+
+    input.value = "";
 }
