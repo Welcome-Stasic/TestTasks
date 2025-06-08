@@ -1,14 +1,12 @@
-const buttons = document.querySelectorAll('.button');
-const contents = document.querySelectorAll('.content');
+function calcAge() {
+    const input = document.getElementById('year').value;
+    const result = document.getElementById('res');
+    const currentYear = new Date().getFullYear();
+    const year = parseInt(input);
 
-buttons.forEach(button => {
-  button.addEventListener('click', () => {
-    const tab = button.dataset.tab;
-
-    buttons.forEach(btn => btn.classList.remove('active'));
-    contents.forEach(content => content.classList.remove('active'));
-
-    button.classList.add('active');
-    document.getElementById(tab).classList.add('active');
-  });
-});
+    if (!isNaN(year) && year > 1900 && year <= currentYear) {
+        result.textContent = `Ваш возраст: ${currentYear - year} лет`;
+    } else {
+        result.textContent = 'введите корректный год.';
+    }
+}
